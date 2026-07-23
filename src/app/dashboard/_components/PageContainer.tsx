@@ -5,9 +5,8 @@ import { type UIEvent, useEffect, useState } from "react";
 import { Spinner } from "xtreme-ui";
 
 import { useQueryParams } from "#utils/hooks/useQueryParams";
-
-import Inventory from "./Inventory/Inventory";
 import Categories from "./Categories/Categories";
+import Inventory from "./Inventory/Inventory";
 import Menu from "./Menu/Menu";
 import NavTopBar from "./Orders/NavTopBar";
 import Orders from "./Orders/Orders";

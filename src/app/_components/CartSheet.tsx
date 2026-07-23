@@ -19,17 +19,7 @@ type TCartSheetProps = {
 	onCheckout: () => void;
 };
 
-const CartSheet = ({
-	items,
-	total,
-	customerName,
-	nameError,
-	placingOrder,
-	onClose,
-	onCustomerNameChange,
-	onUpdateQuantity,
-	onCheckout,
-}: TCartSheetProps) => (
+const CartSheet = ({ items, total, customerName, nameError, placingOrder, onClose, onCustomerNameChange, onUpdateQuantity, onCheckout }: TCartSheetProps) => (
 	<div className="cartOverlay" onClick={onClose}>
 		<div className="cartSheet" onClick={(e) => e.stopPropagation()}>
 			<h2>Giỏ hàng</h2>
@@ -67,12 +57,7 @@ const CartSheet = ({
 					<span>Tổng cộng</span>
 					<span>{total.toLocaleString("vi-VN")}</span>
 				</div>
-				<Button
-					label={placingOrder ? "Đang xử lý..." : "Đặt hàng"}
-					type="primary"
-					disabled={items.length === 0 || placingOrder}
-					onClick={onCheckout}
-				/>
+				<Button label={placingOrder ? "Đang xử lý..." : "Đặt hàng"} type="primary" disabled={items.length === 0 || placingOrder} onClick={onCheckout} />
 			</div>
 		</div>
 	</div>
@@ -88,9 +73,7 @@ type TCartBarProps = {
 
 export const CartBar = ({ count, total, onClick }: TCartBarProps) => (
 	<div className="cartBar" onClick={onClick}>
-		<span>
-			{count} sản phẩm
-		</span>
+		<span>{count} sản phẩm</span>
 		<span className="cartTotal">{total.toLocaleString("vi-VN")}</span>
 		<Icon code="f07a" type="solid" />
 	</div>

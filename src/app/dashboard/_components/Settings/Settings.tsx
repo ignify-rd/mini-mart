@@ -1,8 +1,7 @@
 import { useSearchParams } from "next/navigation.js";
 import type { UIEvent } from "react";
-
-import SettingsAccount from "./SettingsAccount";
 import PaymentSettings from "./PaymentSettings";
+import SettingsAccount from "./SettingsAccount";
 import "./settings.scss";
 
 const Settings = (props: TSettingsProps) => {

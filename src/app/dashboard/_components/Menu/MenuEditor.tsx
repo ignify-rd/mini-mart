@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import useSWR from "swr";
 import { Button } from "xtreme-ui";
 
-import { FormField, LoadingGate, AdminSearchBar } from "#components/base";
+import { AdminSearchBar, FormField, LoadingGate } from "#components/base";
 import { useAdmin } from "#components/context/useContext";
 import Modal from "#components/layout/Modal";
 import type { TCategory } from "#utils/database/models/category";
@@ -131,102 +131,98 @@ const MenuEditor = () => {
 
 	return (
 		<LoadingGate loading={profileLoading} label="Đang tải thực đơn...">
-		<div className="menuEditor">
-			<div className="menuItemEditor">
-				<div className="menuItemToolbar">
-					<AdminSearchBar
-						value={searchQuery}
-						onChange={setSearchQuery}
-						placeholder="Tìm sản phẩm theo tên, danh mục, ID..."
-					/>
-				</div>
-				<div className="menuItemContainer">
-					{filteredMenus.length === 0 ? (
-						<p className="menuItemEmpty">{normalizedQuery ? "Không tìm thấy sản phẩm phù hợp" : "Chưa có sản phẩm"}</p>
-					) : (
-						filteredMenus.map((item, id) => (
-							<MenuEditorItem
-								key={id}
-								item={item}
-								onEdit={onEdit}
-								onHide={onHide}
-								onRestock={onRestock}
-								hideSettingsLoading={hideSettingsLoading.includes(item._id.toString())}
-							/>
-						))
-					)}
-				</div>
-			</div>
-			<Button className={`menuEditorAdd ${modalState ? "active" : ""}`} onClick={() => setModalState("newState")} icon="2b" iconType="solid" />
-			<Modal className="modalCompact" open={isFormOpen} setOpen={(v) => !v && closeModal()}>
-				<MenuItemForm
-					item={modalState === "menuItemEditState" ? editItem : undefined}
-					categories={menuCategories}
-					loading={saveLoading}
-					onSave={onSaveMenuItem}
-					onCancel={closeModal}
-				/>
-			</Modal>
-			<Modal
-				className="modalCompact"
-				open={modalState === "restock"}
-				setOpen={(v) => {
-					if (!v) {
-						setModalState("");
-						setRestockItem(null);
-					}
-				}}>
-				<div className="restockModal">
-					<h3 className="restockModalTitle">Nhập hàng: {restockItem?.name}</h3>
-					<p className="restockModalHint">Tồn kho hiện tại: {restockItem?.stock ?? 0}</p>
-					<div className="restockModalBody">
-						<FormField label="Số lượng nhập" htmlFor="restockStock">
-							<input
-								id="restockStock"
-								className="restockModalInput"
-								type="text"
-								inputMode="numeric"
-								value={importQuantityInput}
-								onChange={(e) => {
-									const { display, value } = parseIntegerInput(e.target.value);
-									setImportQuantityInput(display);
-									setImportQuantity(value);
-								}}
-								onBlur={() => {
-									if (importQuantityInput === "") setImportQuantityInput("0");
-								}}
-							/>
-						</FormField>
-						{importQuantity > 0 && (
-							<p className="restockModalPreview">
-								Tồn kho sau nhập: <strong>{(restockItem?.stock ?? 0) + importQuantity}</strong>
-							</p>
+			<div className="menuEditor">
+				<div className="menuItemEditor">
+					<div className="menuItemToolbar">
+						<AdminSearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Tìm sản phẩm theo tên, danh mục, ID..." />
+					</div>
+					<div className="menuItemContainer">
+						{filteredMenus.length === 0 ? (
+							<p className="menuItemEmpty">{normalizedQuery ? "Không tìm thấy sản phẩm phù hợp" : "Chưa có sản phẩm"}</p>
+						) : (
+							filteredMenus.map((item, id) => (
+								<MenuEditorItem
+									key={id}
+									item={item}
+									onEdit={onEdit}
+									onHide={onHide}
+									onRestock={onRestock}
+									hideSettingsLoading={hideSettingsLoading.includes(item._id.toString())}
+								/>
+							))
 						)}
-						<FormField label="Ngày nhập" htmlFor="restockDate">
-							<input
-								id="restockDate"
-								className="restockModalInput"
-								type="date"
-								value={restockDateValue}
-								onChange={(e) => setRestockDateValue(e.target.value)}
-							/>
-						</FormField>
-					</div>
-					<div className="restockModalActions">
-						<Button
-							label="Hủy"
-							type="secondary"
-							onClick={() => {
-								setModalState("");
-								setRestockItem(null);
-							}}
-							disabled={restockLoading}
-						/>
-						<Button label="Lưu" type="primary" onClick={onRestockSave} loading={restockLoading} />
 					</div>
 				</div>
-			</Modal>
-		</div>
+				<Button className={`menuEditorAdd ${modalState ? "active" : ""}`} onClick={() => setModalState("newState")} icon="2b" iconType="solid" />
+				<Modal className="modalCompact" open={isFormOpen} setOpen={(v) => !v && closeModal()}>
+					<MenuItemForm
+						item={modalState === "menuItemEditState" ? editItem : undefined}
+						categories={menuCategories}
+						loading={saveLoading}
+						onSave={onSaveMenuItem}
+						onCancel={closeModal}
+					/>
+				</Modal>
+				<Modal
+					className="modalCompact"
+					open={modalState === "restock"}
+					setOpen={(v) => {
+						if (!v) {
+							setModalState("");
+							setRestockItem(null);
+						}
+					}}>
+					<div className="restockModal">
+						<h3 className="restockModalTitle">Nhập hàng: {restockItem?.name}</h3>
+						<p className="restockModalHint">Tồn kho hiện tại: {restockItem?.stock ?? 0}</p>
+						<div className="restockModalBody">
+							<FormField label="Số lượng nhập" htmlFor="restockStock">
+								<input
+									id="restockStock"
+									className="restockModalInput"
+									type="text"
+									inputMode="numeric"
+									value={importQuantityInput}
+									onChange={(e) => {
+										const { display, value } = parseIntegerInput(e.target.value);
+										setImportQuantityInput(display);
+										setImportQuantity(value);
+									}}
+									onBlur={() => {
+										if (importQuantityInput === "") setImportQuantityInput("0");
+									}}
+								/>
+							</FormField>
+							{importQuantity > 0 && (
+								<p className="restockModalPreview">
+									Tồn kho sau nhập: <strong>{(restockItem?.stock ?? 0) + importQuantity}</strong>
+								</p>
+							)}
+							<FormField label="Ngày nhập" htmlFor="restockDate">
+								<input
+									id="restockDate"
+									className="restockModalInput"
+									type="date"
+									value={restockDateValue}
+									onChange={(e) => setRestockDateValue(e.target.value)}
+								/>
+							</FormField>
+						</div>
+						<div className="restockModalActions">
+							<Button
+								label="Hủy"
+								type="secondary"
+								onClick={() => {
+									setModalState("");
+									setRestockItem(null);
+								}}
+								disabled={restockLoading}
+							/>
+							<Button label="Lưu" type="primary" onClick={onRestockSave} loading={restockLoading} />
+						</div>
+					</div>
+				</Modal>
+			</div>
 		</LoadingGate>
 	);
 };

@@ -146,14 +146,25 @@ const MenuItemForm = ({ item, categories, loading, onSave, onCancel }: TMenuItem
 				</div>
 
 				<FormField label="Hiển thị" htmlFor="menuHidden">
-					<select id="menuHidden" className="menuItemSelect" value={form.hidden ? "hidden" : "visible"} onChange={(e) => setField("hidden", e.target.value === "hidden")}>
+					<select
+						id="menuHidden"
+						className="menuItemSelect"
+						value={form.hidden ? "hidden" : "visible"}
+						onChange={(e) => setField("hidden", e.target.value === "hidden")}>
 						<option value="visible">Hiện trên menu</option>
 						<option value="hidden">Ẩn khỏi menu</option>
 					</select>
 				</FormField>
 
 				<FormField label="Ảnh (URL)" htmlFor="menuImage">
-					<input id="menuImage" className="menuItemInput" type="url" value={form.image} onChange={(e) => setField("image", e.target.value)} placeholder="https://..." />
+					<input
+						id="menuImage"
+						className="menuItemInput"
+						type="url"
+						value={form.image}
+						onChange={(e) => setField("image", e.target.value)}
+						placeholder="https://..."
+					/>
 				</FormField>
 			</div>
 

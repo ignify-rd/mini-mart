@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
-import { Button, Icon } from "xtreme-ui";
+import { Button } from "xtreme-ui";
 
 import { SplitHeading } from "#components/base";
 

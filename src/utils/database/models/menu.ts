@@ -8,16 +8,10 @@ function rowToMenu(row: Record<string, unknown>): TMenu {
 	const rawCategoryId = row.categoryId ?? row.category_id;
 	const legacyCategory = row.category;
 	const categoryIdFromLegacy =
-		rawCategoryId == null || rawCategoryId === ""
-			? /^\d+$/.test(String(legacyCategory ?? "").trim())
-				? String(legacyCategory).trim()
-				: ""
-			: String(rawCategoryId);
+		rawCategoryId == null || rawCategoryId === "" ? (/^\d+$/.test(String(legacyCategory ?? "").trim()) ? String(legacyCategory).trim() : "") : String(rawCategoryId);
 
 	const legacyName =
-		!categoryIdFromLegacy && typeof legacyCategory === "string" && legacyCategory.trim() && !/^\d+$/.test(legacyCategory.trim())
-			? legacyCategory.trim()
-			: undefined;
+		!categoryIdFromLegacy && typeof legacyCategory === "string" && legacyCategory.trim() && !/^\d+$/.test(legacyCategory.trim()) ? legacyCategory.trim() : undefined;
 
 	return {
 		_id: String(row._id),

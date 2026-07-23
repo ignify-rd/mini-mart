@@ -197,10 +197,7 @@ export async function insertMany(sheetName: string, dataArray: RowData[]): Promi
 	const sheets = getSheetsClient();
 	const spreadsheetId = getSpreadsheetId();
 	const headers = await ensureHeaders(sheetName, dataArray[0]);
-	const generatedIds = await getNextIds(
-		sheetName,
-		dataArray.filter((data) => data._id == null || data._id === "").length,
-	);
+	const generatedIds = await getNextIds(sheetName, dataArray.filter((data) => data._id == null || data._id === "").length);
 
 	let nextIndex = 0;
 	const values = dataArray.map((data) => {

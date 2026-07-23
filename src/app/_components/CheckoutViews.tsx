@@ -27,27 +27,16 @@ type TPaymentViewProps = {
 	onBack: () => void;
 };
 
-export const PaymentView = ({
-	orderTotal,
-	paymentReference,
-	qrImage,
-	confirmingPayment,
-	onConfirm,
-	onBack,
-}: TPaymentViewProps) => (
+export const PaymentView = ({ orderTotal, paymentReference, qrImage, confirmingPayment, onConfirm, onBack }: TPaymentViewProps) => (
 	<div className="homepage">
 		<div className="paymentView">
 			<h2>Quét mã QR thanh toán</h2>
 			<p className="orderTotal">{orderTotal.toLocaleString("vi-VN")}</p>
+			{/* biome-ignore lint/performance/noImgElement: dynamic VietQR URL, not in next/image remotePatterns */}
 			{qrImage && <img src={qrImage} alt="Mã QR thanh toán" className="qrImage" />}
 			<p className="paymentRef">Mã giao dịch: {paymentReference}</p>
 			<div className="paymentActions">
-				<Button
-					label={confirmingPayment ? "Đang xử lý..." : "Đã thanh toán"}
-					type="primary"
-					disabled={confirmingPayment}
-					onClick={onConfirm}
-				/>
+				<Button label={confirmingPayment ? "Đang xử lý..." : "Đã thanh toán"} type="primary" disabled={confirmingPayment} onClick={onConfirm} />
 				<Button label="Quay lại" type="secondary" disabled={confirmingPayment} onClick={onBack} />
 			</div>
 		</div>

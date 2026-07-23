@@ -27,8 +27,7 @@ export default function Homepage() {
 
 function MenuPage() {
 	const { restaurant, loading } = useContext(RestaurantContext);
-	const { order, pendingCheckout, placeOrder, placingOrder, confirmPayment, confirmingPayment, clearCheckout, resetOrder } =
-		useContext(OrderContext);
+	const { order, pendingCheckout, placeOrder, placingOrder, confirmPayment, confirmingPayment, clearCheckout, resetOrder } = useContext(OrderContext);
 	const [cart, setCart] = useState<Record<string, number>>({});
 	const [showCart, setShowCart] = useState(false);
 	const [customerName, setCustomerName] = useState("");
@@ -51,9 +50,7 @@ function MenuPage() {
 	const filteredMenus = useMemo(() => {
 		let items = visibleMenus;
 		if (normalizedQuery) {
-			items = items.filter(
-				(m) => m.name.toLowerCase().includes(normalizedQuery) || (m.category ?? "").toLowerCase().includes(normalizedQuery),
-			);
+			items = items.filter((m) => m.name.toLowerCase().includes(normalizedQuery) || (m.category ?? "").toLowerCase().includes(normalizedQuery));
 		}
 		if (activeCategory) {
 			const activeCategoryKey = getMenuCategoryKey(activeCategory);
@@ -67,15 +64,11 @@ function MenuPage() {
 	const categoryCounts = useMemo(() => {
 		const counts: Record<string, number> = {};
 		const source = normalizedQuery
-			? visibleMenus.filter(
-					(m) => m.name.toLowerCase().includes(normalizedQuery) || (m.category ?? "").toLowerCase().includes(normalizedQuery),
-				)
+			? visibleMenus.filter((m) => m.name.toLowerCase().includes(normalizedQuery) || (m.category ?? "").toLowerCase().includes(normalizedQuery))
 			: visibleMenus;
 
 		for (const item of source) {
-			const category =
-				categories.find((cat) => getMenuCategoryKey(cat) === getMenuCategoryKey(item.category ?? "")) ??
-				(item.category ?? "").trim();
+			const category = categories.find((cat) => getMenuCategoryKey(cat) === getMenuCategoryKey(item.category ?? "")) ?? (item.category ?? "").trim();
 			if (!category) continue;
 			counts[category] = (counts[category] ?? 0) + 1;
 		}
@@ -154,13 +147,7 @@ function MenuPage() {
 
 	return (
 		<div className="homepage">
-			<StoreHeader
-				storeName={storeName}
-				storeDesc={storeDesc}
-				storeAddress={storeAddress}
-				coverImage={coverImage}
-				avatarImage={avatarImage}
-			/>
+			<StoreHeader storeName={storeName} storeDesc={storeDesc} storeAddress={storeAddress} coverImage={coverImage} avatarImage={avatarImage} />
 
 			{!loading && categories.length > 0 && (
 				<MenuToolbar

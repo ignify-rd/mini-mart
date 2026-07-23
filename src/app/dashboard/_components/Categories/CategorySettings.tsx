@@ -26,10 +26,7 @@ const CategorySettings = () => {
 	const normalizedQuery = searchQuery.trim().toLowerCase();
 	const filteredCategories = useMemo(() => {
 		if (!normalizedQuery) return categories;
-		return categories.filter(
-			(category) =>
-				category.name.toLowerCase().includes(normalizedQuery) || String(category._id).includes(normalizedQuery),
-		);
+		return categories.filter((category) => category.name.toLowerCase().includes(normalizedQuery) || String(category._id).includes(normalizedQuery));
 	}, [categories, normalizedQuery]);
 
 	const closeModal = () => {
@@ -108,13 +105,7 @@ const CategorySettings = () => {
 										<span className="categorySettingsItemName">{category.name}</span>
 									</div>
 									<div className="categorySettingsItemActions">
-										<Button
-											label="Sửa"
-											type="secondary"
-											size="mini"
-											onClick={() => onEdit(category)}
-											disabled={saveLoading || Boolean(deletingId)}
-										/>
+										<Button label="Sửa" type="secondary" size="mini" onClick={() => onEdit(category)} disabled={saveLoading || Boolean(deletingId)} />
 										<Button
 											label="Xóa"
 											type="secondary"
@@ -130,20 +121,10 @@ const CategorySettings = () => {
 					)}
 				</div>
 
-				<Button
-					className={`categorySettingsAdd ${modalState ? "active" : ""}`}
-					onClick={() => setModalState("newState")}
-					icon="2b"
-					iconType="solid"
-				/>
+				<Button className={`categorySettingsAdd ${modalState ? "active" : ""}`} onClick={() => setModalState("newState")} icon="2b" iconType="solid" />
 
 				<Modal className="modalCompact" open={isFormOpen} setOpen={(v) => !v && closeModal()}>
-					<CategoryForm
-						category={modalState === "categoryEditState" ? editCategory : undefined}
-						loading={saveLoading}
-						onSave={onSave}
-						onCancel={closeModal}
-					/>
+					<CategoryForm category={modalState === "categoryEditState" ? editCategory : undefined} loading={saveLoading} onSave={onSave} onCancel={closeModal} />
 				</Modal>
 			</div>
 		</LoadingGate>

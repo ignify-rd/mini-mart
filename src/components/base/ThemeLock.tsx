@@ -11,10 +11,7 @@ const ThemeLock = () => {
 
 	useEffect(() => {
 		if (themeScheme !== "light") setThemeScheme("light");
-		const same =
-			themeColor?.h === DEFAULT_THEME_COLOR.h &&
-			themeColor?.s === DEFAULT_THEME_COLOR.s &&
-			themeColor?.l === DEFAULT_THEME_COLOR.l;
+		const same = themeColor?.h === DEFAULT_THEME_COLOR.h && themeColor?.s === DEFAULT_THEME_COLOR.s && themeColor?.l === DEFAULT_THEME_COLOR.l;
 		if (!same) setThemeColor({ ...DEFAULT_THEME_COLOR });
 	}, [themeColor, themeScheme, setThemeColor, setThemeScheme]);
 

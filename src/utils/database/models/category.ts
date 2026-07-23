@@ -36,9 +36,7 @@ export const Categories = {
 
 	async findByRestaurant(restaurantID: string): Promise<TCategory[]> {
 		const rows = await Categories.find<TCategory>({ restaurantID });
-		return rows
-			.filter((row) => row.name?.trim())
-			.sort((a, b) => a.name.localeCompare(b.name, "vi"));
+		return rows.filter((row) => row.name?.trim()).sort((a, b) => a.name.localeCompare(b.name, "vi"));
 	},
 
 	async findByName(restaurantID: string, name: string): Promise<TCategory | null> {

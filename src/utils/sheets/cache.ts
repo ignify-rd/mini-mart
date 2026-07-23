@@ -66,8 +66,9 @@ export async function loadSheet(sheetName: string, options?: { force?: boolean }
 		if (cached) return cached;
 	}
 
-	if (loadingLocks[sheetName]) {
-		return loadingLocks[sheetName]!;
+	const existingLock = loadingLocks[sheetName];
+	if (existingLock) {
+		return existingLock;
 	}
 
 	const promise = fetchSheetFromGoogle(sheetName)

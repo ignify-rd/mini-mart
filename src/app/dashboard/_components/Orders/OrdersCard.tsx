@@ -16,11 +16,7 @@ const OrdersCard = (props: TOrdersCard) => {
 			}}>
 			<div className="content">
 				<p className="name">{customerName}</p>
-				{!data?.products?.length ? (
-					<p className="noContent">Chưa có đơn hàng</p>
-				) : (
-					<p className="total rupee">{data?.orderTotal.toLocaleString("vi-VN")}</p>
-				)}
+				{!data?.products?.length ? <p className="noContent">Chưa có đơn hàng</p> : <p className="total rupee">{data?.orderTotal.toLocaleString("vi-VN")}</p>}
 			</div>
 		</div>
 	);

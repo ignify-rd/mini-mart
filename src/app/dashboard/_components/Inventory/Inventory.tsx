@@ -35,12 +35,7 @@ const Inventory = () => {
 	return (
 		<LoadingGate loading={profileLoading} label="Đang tải tồn kho...">
 			<div className="inventory">
-				<AdminSearchBar
-					value={searchQuery}
-					onChange={setSearchQuery}
-					placeholder="Tìm theo tên, danh mục, ID..."
-					className="inventorySearch"
-				/>
+				<AdminSearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Tìm theo tên, danh mục, ID..." className="inventorySearch" />
 				<div className="menuStockList">
 					{filteredMenus.length === 0 ? (
 						<p className="inventoryEmpty">{normalizedQuery ? "Không tìm thấy sản phẩm phù hợp" : "Chưa có sản phẩm"}</p>

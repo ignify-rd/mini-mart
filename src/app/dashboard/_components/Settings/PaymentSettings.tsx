@@ -131,6 +131,7 @@ const PaymentSettings = () => {
 								{previewUrl ? (
 									<>
 										<div className="qrFrame">
+											{/* biome-ignore lint/performance/noImgElement: dynamic VietQR preview URL, not in next/image remotePatterns */}
 											<img src={previewUrl} alt="Xem trước mã QR" />
 										</div>
 										<div className="previewMeta">

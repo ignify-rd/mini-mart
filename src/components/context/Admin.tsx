@@ -21,7 +21,11 @@ const sortByDate = (a: { updatedAt: string | number | Date }, b: { updatedAt: st
 
 export const AdminContext = createContext(AdminDefault);
 export const AdminProvider = ({ children }: TAdminProviderProps) => {
-	const { data: adminData, isLoading: profileLoading, mutate: profileMutate } = useSWR("/api/admin", fetcher, {
+	const {
+		data: adminData,
+		isLoading: profileLoading,
+		mutate: profileMutate,
+	} = useSWR("/api/admin", fetcher, {
 		dedupingInterval: 10000,
 		revalidateOnFocus: false,
 	});

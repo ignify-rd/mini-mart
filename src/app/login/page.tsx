@@ -127,7 +127,6 @@ export default function LoginPage() {
 									value={username}
 									onChange={(e) => setUsername(e.target.value)}
 									disabled={loading}
-									autoFocus
 								/>
 							</IconField>
 						</FormField>

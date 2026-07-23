@@ -3,9 +3,8 @@
 import { SessionProvider } from "next-auth/react";
 import { type ReactNode, Suspense } from "react";
 import { XProvider } from "xtreme-ui";
-
-import { ToastManager } from "#components/base/ToastManager";
 import ThemeLock from "#components/base/ThemeLock";
+import { ToastManager } from "#components/base/ToastManager";
 
 import { AdminProvider } from "./Admin";
 import { OrderProvider } from "./Order";

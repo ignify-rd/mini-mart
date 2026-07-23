@@ -57,11 +57,7 @@ const OrderHistory = (props: TOrderHistoryProps) => {
 				<div className="ordersContent">
 					<div className="list" onScroll={onScroll}>
 						<div className="ordersSearchWrap">
-							<AdminSearchBar
-								value={searchQuery}
-								onChange={setSearchQuery}
-								placeholder="Tìm theo tên khách, mã đơn, tham chiếu..."
-							/>
+							<AdminSearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Tìm theo tên khách, mã đơn, tham chiếu..." />
 						</div>
 						{filteredOrders.length === 0 ? (
 							<p className="ordersSearchEmpty">Không tìm thấy đơn hàng phù hợp</p>
