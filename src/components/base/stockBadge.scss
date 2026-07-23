@@ -1,0 +1,39 @@
+.stockBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 12px;
+	border-radius: 9999px;
+	font-size: 13px;
+	font-weight: 600;
+	flex-shrink: 0;
+
+	&.ok {
+		background: hsl(var(--colorAlertSuccess) / 0.15);
+		color: hsl(var(--colorAlertSuccess));
+	}
+
+	&.low {
+		background: hsl(var(--colorAlertWarning) / 0.15);
+		color: hsl(var(--colorAlertWarning));
+	}
+
+	&.empty {
+		background: hsl(var(--colorAlertError) / 0.15);
+		color: hsl(var(--colorAlertError));
+	}
+
+	.stockLabel {
+		font-weight: 400;
+		opacity: 0.8;
+	}
+
+	.restockDate {
+		margin-left: 6px;
+		padding-left: 6px;
+		border-left: 1px solid currentcolor;
+		font-size: 11px;
+		font-weight: 500;
+		opacity: 0.85;
+	}
+}

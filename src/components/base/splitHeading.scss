@@ -1,0 +1,26 @@
+.splitHeading {
+	.splitHeadingTitle {
+		color: var(--colorContentPrimary);
+		font-variation-settings: 'wdth' 75, 'wght' 500;
+		margin: 0;
+		overflow: hidden;
+		user-select: none;
+		white-space: nowrap;
+
+		span {
+			font-variation-settings: 'wdth' 75, 'wght' 300;
+		}
+
+		&.brandAccent span {
+			color: hsl(var(--colorBrandPrimary));
+		}
+	}
+
+	.splitHeadingDescription {
+		margin: 6px 0 0;
+		font-size: 14px;
+		line-height: 1.5;
+		color: var(--colorContentSecondary);
+		white-space: normal;
+	}
+}

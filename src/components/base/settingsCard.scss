@@ -1,0 +1,51 @@
+.settingsCard {
+	width: 100%;
+	background: var(--colorBackgroundPrimary);
+	border-radius: 20px;
+	box-shadow: 0 10px 10px -10px rgb(0 0 0 / 10%);
+
+	&.default {
+		margin-top: 30px;
+		padding: 20px 30px;
+	}
+
+	&.featured {
+		border: 1px solid var(--colorContentTertiary);
+		box-shadow: 0 10px 24px rgb(0 0 0 / 6%);
+		overflow: hidden;
+
+		.settingsCardBody {
+			padding: 28px;
+		}
+	}
+
+	.settingsCardBody {
+		position: relative;
+	}
+}
+
+.settingsFeaturedHeader {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 24px 28px;
+	border-bottom: 1px solid var(--colorContentTertiary);
+	background: linear-gradient(135deg, hsl(var(--colorBrandPrimary) / 0.08), hsl(var(--colorBrandPrimary) / 0.02));
+
+	.headerIcon {
+		width: 48px;
+		height: 48px;
+		border-radius: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: hsl(var(--colorBrandPrimary));
+		color: #fff;
+		flex-shrink: 0;
+		box-shadow: 0 4px 12px hsl(var(--colorBrandPrimary) / 0.35);
+	}
+
+	.splitHeading .splitHeadingTitle {
+		font-size: 28px;
+	}
+}

@@ -1,0 +1,95 @@
+.modal {
+	--modalDuration: 0.2s;
+
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 300;
+
+	&.open {
+		visibility: visible;
+		pointer-events: auto;
+
+		.backdrop {
+			opacity: 1;
+		}
+
+		.modalPane {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.backdrop {
+		position: fixed;
+		inset: 0;
+		background-color: var(--colorBackdropPrimary);
+		opacity: 0;
+		transition: opacity 0.25s ease-out;
+	}
+
+	.modalPane {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		width: min(500px, calc(100vw - 32px));
+		max-height: calc(100vh - 32px);
+		padding: 52px 28px 28px;
+		box-sizing: border-box;
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+		border-radius: 20px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		box-shadow: 0 24px 80px rgb(0 0 0 / 28%);
+		background-color: var(--colorBackgroundPrimary);
+		transition:
+			opacity var(--modalDuration) ease-out,
+			transform var(--modalDuration) ease-out;
+
+		.closeModal {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			cursor: pointer;
+			z-index: 2;
+		}
+	}
+
+	&.modalCompact .modalPane {
+		width: min(460px, calc(100vw - 32px));
+		padding: 52px 24px 24px;
+	}
+}
+
+@media (width <= 650px) {
+	.modal {
+		align-items: flex-end;
+
+		&.open .modalPane {
+			transform: translateY(0);
+		}
+
+		.modalPane {
+			width: 100%;
+			max-height: min(92vh, 100%);
+			padding: 48px 20px calc(20px + env(safe-area-inset-bottom));
+			border-radius: 24px 24px 0 0;
+			transform: translateY(100%);
+
+			.closeModal {
+				top: 12px;
+				right: 12px;
+				width: 44px;
+				height: 44px;
+			}
+		}
+	}
+}

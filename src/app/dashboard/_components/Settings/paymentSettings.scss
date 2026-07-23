@@ -1,0 +1,116 @@
+.paymentSettings {
+	padding: 24px 32px 40px;
+	width: 100%;
+	box-sizing: border-box;
+
+	.paymentBody {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+		gap: 28px;
+	}
+
+	.paymentForm {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.saveBtn {
+		align-self: flex-start;
+		min-width: 160px;
+		height: 46px;
+		margin-top: 4px;
+		border-radius: 12px;
+	}
+
+	.paymentPreview {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.previewCard {
+		width: 100%;
+		background: var(--colorBackgroundSecondary);
+		border: 1px solid var(--colorContentTertiary);
+		border-radius: 16px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.previewHeader {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--colorContentSecondary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.qrFrame {
+		display: flex;
+		justify-content: center;
+		padding: 16px;
+		background: #fff;
+		border-radius: 12px;
+		border: 1px solid var(--colorContentTertiary);
+
+		img {
+			width: 100%;
+			max-width: 220px;
+			height: auto;
+			display: block;
+		}
+	}
+
+	.previewMeta {
+		text-align: center;
+
+		p {
+			margin: 0 0 4px;
+			font-size: 13px;
+			color: var(--colorContentPrimary);
+
+			strong {
+				color: hsl(var(--colorBrandPrimary));
+			}
+		}
+
+		.accountName {
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+		}
+
+		.sampleAmount {
+			margin-top: 8px;
+			font-size: 12px;
+			color: var(--colorContentSecondary);
+		}
+	}
+
+	.previewEmpty {
+		min-height: 240px;
+	}
+}
+
+@media (width <= 900px) {
+	.paymentSettings {
+		padding: 20px 20px 32px;
+
+		.paymentBody {
+			grid-template-columns: 1fr;
+		}
+
+		.paymentPreview {
+			order: -1;
+		}
+
+		.previewCard {
+			max-width: 360px;
+		}
+	}
+}

@@ -1,0 +1,293 @@
+.loginPage {
+  display: flex;
+  min-height: 100vh;
+  background: var(--colorBackgroundPrimary);
+
+  .loginBrand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, hsl(var(--colorBrandPrimary) / 0.12), hsl(var(--colorBrandPrimary) / 0.04));
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: hsl(var(--colorBrandPrimary) / 0.06);
+      top: -100px;
+      right: -100px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: hsl(var(--colorBrandPrimary) / 0.04);
+      bottom: -80px;
+      left: -80px;
+    }
+
+    .brandContent {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: loginFadeIn 0.6s ease-out;
+
+      .brandIcon {
+        color: hsl(var(--colorBrandPrimary));
+        margin-bottom: 16px;
+        font-size: 48px;
+      }
+
+      .brandName {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--colorContentPrimary);
+        margin: 0 0 8px;
+        font-family: var(--montserrat);
+      }
+
+      .brandTagline {
+        color: var(--colorContentSecondary);
+        font-size: 14px;
+        margin: 0 0 32px;
+        line-height: 1.5;
+        max-width: 320px;
+      }
+
+      .brandFeatures {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+        max-width: 280px;
+        margin: 0 auto;
+
+        .featureItem {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--colorContentSecondary);
+          font-size: 13px;
+
+          i {
+            color: hsl(var(--colorBrandPrimary));
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .loginFormWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+
+    .loginFormContainer {
+      width: 100%;
+      max-width: 400px;
+      animation: loginFadeIn 0.6s ease-out 0.15s both;
+
+      .formHeader {
+        margin-bottom: 32px;
+
+        h2 {
+          font-size: 28px;
+          font-weight: 700;
+          color: var(--colorContentPrimary);
+          margin: 0 0 8px;
+          font-family: var(--montserrat);
+        }
+
+        p {
+          color: var(--colorContentSecondary);
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+
+      .loginForm {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .formError {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          background: #fef2f2;
+          border: 1px solid #fecaca;
+          border-radius: 8px;
+          color: #dc2626;
+          font-size: 13px;
+          font-weight: 500;
+
+          i {
+            flex-shrink: 0;
+            color: #dc2626;
+          }
+        }
+
+        .inputGroup {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--colorContentPrimary);
+          }
+
+          .inputWrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .inputIcon {
+              position: absolute;
+              left: 14px;
+              color: var(--colorContentTertiary);
+              pointer-events: none;
+              font-size: 14px;
+            }
+
+            input {
+              width: 100%;
+              padding: 12px 14px 12px 42px;
+              border: 1.5px solid var(--colorContentTertiary);
+              border-radius: 10px;
+              font-size: 14px;
+              background: var(--colorBackgroundSecondary);
+              color: var(--colorContentPrimary);
+              outline: none;
+              transition: border-color 0.2s, box-shadow 0.2s;
+              box-sizing: border-box;
+
+              &::placeholder {
+                color: var(--colorContentTertiary);
+              }
+
+              &:focus {
+                border-color: hsl(var(--colorBrandPrimary));
+                box-shadow: 0 0 0 3px hsl(var(--colorBrandPrimary) / 0.15);
+              }
+
+              &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+              }
+            }
+          }
+        }
+
+        .rememberRow {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: -4px;
+          font-size: 13px;
+          color: var(--colorContentSecondary);
+          cursor: pointer;
+          user-select: none;
+
+          input {
+            width: 16px;
+            height: 16px;
+            accent-color: hsl(var(--colorBrandPrimary));
+            cursor: pointer;
+          }
+        }
+
+        .loginSubmit {
+          margin-top: 4px;
+          height: 46px;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: 600;
+        }
+      }
+
+      .formFooter {
+        margin-top: 24px;
+        text-align: center;
+
+        a {
+          color: var(--colorContentTertiary);
+          font-size: 13px;
+          text-decoration: none;
+          transition: color 0.2s;
+
+          &:hover {
+            color: var(--colorContentSecondary);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes loginFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (width <= 768px) {
+  .loginPage {
+    flex-direction: column;
+
+    .loginBrand {
+      padding: 48px 24px 32px;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .brandContent {
+        .brandIcon {
+          font-size: 40px;
+        }
+
+        .brandName {
+          font-size: 28px;
+        }
+
+        .brandTagline {
+          font-size: 13px;
+          max-width: 280px;
+        }
+      }
+    }
+
+    .loginFormWrapper {
+      padding: 24px 24px 48px;
+
+      .loginFormContainer {
+        .formHeader {
+          h2 {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}

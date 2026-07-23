@@ -1,0 +1,65 @@
+.adminSearchBar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 420px;
+	background: var(--colorBackgroundPrimary);
+	border: 1px solid var(--colorContentTertiary);
+	border-radius: 12px;
+	padding: 0 12px;
+	transition:
+		border-color 0.2s ease-out,
+		box-shadow 0.2s ease-out;
+
+	&:focus-within {
+		border-color: hsl(var(--colorBrandPrimary));
+		box-shadow: 0 0 0 3px hsl(var(--colorBrandPrimary) / 12%);
+	}
+
+	.adminSearchIcon {
+		flex-shrink: 0;
+		color: var(--colorContentTertiary);
+	}
+
+	input {
+		flex: 1;
+		min-width: 0;
+		border: none;
+		outline: none;
+		background: transparent;
+		padding: 11px 10px;
+		font-size: 14px;
+		color: var(--colorContentPrimary);
+		font-family: inherit;
+
+		&::placeholder {
+			color: var(--colorContentTertiary);
+		}
+
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+	}
+
+	.adminSearchClear {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 28px;
+		border: none;
+		border-radius: 50%;
+		background: var(--colorBackgroundSecondary);
+		color: var(--colorContentSecondary);
+		cursor: pointer;
+		transition: background-color 0.15s ease-out;
+
+		@media (hover: hover) {
+			&:hover {
+				background: var(--colorContentTertiary);
+			}
+		}
+	}
+}

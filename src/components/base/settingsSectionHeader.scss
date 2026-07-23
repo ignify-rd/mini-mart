@@ -1,0 +1,29 @@
+.settingsSectionHeader {
+	display: flex;
+	min-height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+
+	.settingsSectionHeading .splitHeadingTitle {
+		font-size: 30px;
+	}
+
+	.settingsSectionActions {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 8px;
+		flex-shrink: 0;
+
+		.clear {
+			scale: 0.88;
+		}
+	}
+}
+
+@media (width <= 750px) {
+	.settingsSectionHeader .settingsSectionHeading .splitHeadingTitle {
+		font-size: 24px;
+	}
+}

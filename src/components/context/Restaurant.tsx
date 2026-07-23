@@ -1,0 +1,28 @@
+import { createContext, type ReactNode } from "react";
+import useSWR from "swr";
+
+import type { TAccount } from "#utils/database/models/account";
+import { fetcher } from "#utils/helper/common";
+
+const RestaurantDefault: TRestaurantInitialType = {
+	restaurant: undefined,
+	error: undefined,
+	loading: false,
+};
+
+export const RestaurantContext = createContext(RestaurantDefault);
+export const RestaurantProvider = ({ children }: TRestaurantProviderProps) => {
+	const { data: restaurant, error, isLoading } = useSWR("/api/menu", fetcher);
+
+	return <RestaurantContext.Provider value={{ restaurant, error, loading: isLoading }}>{children}</RestaurantContext.Provider>;
+};
+
+export type TRestaurantProviderProps = {
+	children?: ReactNode;
+};
+
+export type TRestaurantInitialType = {
+	restaurant?: TAccount;
+	error: unknown;
+	loading: boolean;
+};
